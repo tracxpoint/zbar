@@ -456,7 +456,8 @@ static inline zbar_symbol_type_t decode_pass (zbar_decoder_t *dcode,
 	else if((idx == 0x18 || idx == 0x19)) {
 	  zbar_symbol_type_t part = ZBAR_NONE;
 	  dbprintf(2, " fwd=%x", fwd);
-	  if(!aux_end(dcode, fwd) && pass->raw[5] != 0xff)
+//	  if(!aux_end(dcode, fwd) && pass->raw[5] != 0xff)
+      if(pass->raw[5] != 0xff)
 	    part = ean_part_end7(&dcode->ean, pass, fwd);
 	  if(part)
 	    dcode->ean.direction = (pass->state & STATE_REV) != 0;
